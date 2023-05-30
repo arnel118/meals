@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:meals/models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:meals/widgets/meal_item_trait.dart';
 
+import 'package:meals_wide_state/widgets/meal_item_trait.dart';
+import 'package:meals_wide_state/models/meal.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal, required this.onSelectMeal});
+  const MealItem({
+    super.key,
+    required this.meal,
+    required this.onSelectMeal,
+  });
 
   final Meal meal;
   final void Function(Meal meal) onSelectMeal;
 
   String get complexityText {
-    return meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1);
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
   }
 
   String get affordabilityText {
-    return meal.affordability.name[0].toUpperCase() + meal.affordability.name.substring(1);
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
   }
 
   @override
@@ -34,7 +40,7 @@ class MealItem extends StatelessWidget {
         child: Stack(
           children: [
             FadeInImage(
-              placeholder: MemoryImage(kTransparentImage), 
+              placeholder: MemoryImage(kTransparentImage),
               image: NetworkImage(meal.imageUrl),
               fit: BoxFit.cover,
               height: 200,
@@ -46,22 +52,20 @@ class MealItem extends StatelessWidget {
               right: 0,
               child: Container(
                 color: Colors.black54,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 6,
-                  horizontal: 45,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
                 child: Column(
-                  children: [                 
+                  children: [
                     Text(
                       meal.title,
-                      maxLines: 2, 
+                      maxLines: 2,
                       textAlign: TextAlign.center,
-                      softWrap: true, 
-                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis, // Very long text ...
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,    
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -69,25 +73,25 @@ class MealItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MealItemTrait(
-                          icon: Icons.schedule, 
-                          label: '${meal.duration} min'
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
                         ),
                         const SizedBox(width: 12),
                         MealItemTrait(
-                          icon: Icons.work, 
-                          label: complexityText
+                          icon: Icons.work,
+                          label: complexityText,
                         ),
-                        const  SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         MealItemTrait(
-                          icon: Icons.attach_money, 
-                          label: affordabilityText
-                        ),
-                      ],  
+                          icon: Icons.attach_money,
+                          label: affordabilityText,
+                        )
+                      ],
                     ),
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -11,6 +11,7 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -24,7 +25,6 @@ class MainDrawer extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
             ),
-            padding: const EdgeInsets.all(20),
             child: Row(
               children: [
                 Icon(
@@ -32,16 +32,13 @@ class MainDrawer extends StatelessWidget {
                   size: 48,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                const SizedBox(
-                  width: 18,
-                ),
+                const SizedBox(width: 18),
                 Text(
                   'Cooking Up!',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.primary),
-                )
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                ),
               ],
             ),
           ),
@@ -54,8 +51,9 @@ class MainDrawer extends StatelessWidget {
             title: Text(
               'Meals',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 24),
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 24,
+                  ),
             ),
             onTap: () {
               onSelectScreen('meals');
@@ -70,8 +68,9 @@ class MainDrawer extends StatelessWidget {
             title: Text(
               'Filters',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 24),
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 24,
+                  ),
             ),
             onTap: () {
               onSelectScreen('filters');
